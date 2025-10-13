@@ -1,0 +1,13 @@
+public class LoginService {
+    public boolean login(String username, String password) {
+        User user = Database.findUserByUsername(username);
+
+        // Bug 1: Null pointer if user not found
+        // Bug 2: String comparison using '=='
+        if (user != null && user.getPassword() == password) {
+            return true;
+        }
+        return false;
+    }
+}
+
